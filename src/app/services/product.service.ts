@@ -7,7 +7,7 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private url: string = "http://localhost:8080";
+  private url: string = "http://localhost:8080/products";
 
   constructor(private http: HttpClient) {}
   findAll(): Observable<Product[]>{

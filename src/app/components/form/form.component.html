@@ -1,28 +1,56 @@
-<h2>Form{{product.id > 0? 'Update': 'Create'}} Product</h2>
+<h2>{{product.id > 0 ? 'Update' : 'Create'}} Product</h2>
 
-<form (ngSubmit)="onSubmit()">
-    <div>
-        <input class="form-control my-2"
-        placeholder="Name"
-        name="name"
-        [(ngModel)]="product.name">
-        </div>
-        <div>
-            <input class="form-control my-2"
-            placeholder="Description"
-            name="description"
-            [(ngModel)]="product.description">
-            </div>
-            <div>
-                <input class="form-control my-2"
-                placeholder="Price"
-                name="price"
-                [(ngModel)]="product.price">
+<form #productForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <div>
+    <input class="form-control my-2"
+      placeholder="Name"
+      name="name"
+      [(ngModel)]="product.name"
+      #name="ngModel"
+      required
+      pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$"
+      [ngClass]="{'is-invalid': name.invalid && name.touched}">
+    <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
+      Nombre es requirido y solo debe contener letras y espacio.
     </div>
-    <div>
-        <button type="submit"
-        class="btn btn-primary my-2">
-        {{product.id > 0? 'Update': 'Create'}}
-        </button>
+  </div>
+
+  <div>
+    <input class="form-control my-2"
+      placeholder="Description"
+      name="description"
+      [(ngModel)]="product.description"
+      #description="ngModel"
+      required
+      pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$"
+      [ngClass]="{'is-invalid': description.invalid && description.touched}">
+    <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
+        Nombre es requirido y solo debe contener letras y espacio.
     </div>
+  </div>
+
+  <div>
+    <input type="number"
+      class="form-control my-2"
+      placeholder="Price"
+      name="price"
+      [(ngModel)]="product.price"
+      #price="ngModel"
+      required
+      min="1"
+      [ngClass]="{'is-invalid': price.invalid && price.touched}">
+    <div *ngIf="price.invalid && price.touched" class="invalid-feedback">
+      Precio es requerido y debe ser mayor que 0.
+    </div>
+  </div>
+
+  <div>
+    <button type="submit"
+      class="btn btn-primary my-2"
+      [disabled]="productForm.invalid">
+      {{product.id > 0 ? 'Update' : 'Create'}}
+    </button>
+  </div>
+
 </form>
