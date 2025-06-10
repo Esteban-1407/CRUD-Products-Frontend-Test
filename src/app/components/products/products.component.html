@@ -3,7 +3,7 @@
       <div class="col">
         <h2>{{ title }}</h2>
         @if (products.length > 0) {
-          <table class="table table-striped table-hover">
+          <table class="table table-striped table-hover" data-cy="product-list">
             <thead>
               <tr>
                 <th>id</th>
@@ -16,26 +16,36 @@
             </thead>
             <tbody>
               @for (product of products; track product.id) {
-                <tr>
+                <tr data-cy="product-item">
                   <td>{{ product.id }}</td>
                   <td>{{ product.name }}</td>
                   <td>{{ product.description }}</td>
                   <td>{{ product.price }}</td>
                   <td>
-                    <button class="btn btn-sb btn-primary" (click)="onUpdateProduct(product)">Update</button>
+                    <button 
+                      class="btn btn-sb btn-primary" 
+                      (click)="onUpdateProduct(product)"
+                      data-cy="edit-product-btn">
+                      Update
+                    </button>
                   </td>
                   <td>
-                    <button class="btn btn-sb btn-danger" (click)="onRemoveProduct(product.id)">Remove</button>
+                    <button 
+                      class="btn btn-sb btn-danger" 
+                      (click)="onRemoveProduct(product.id)"
+                      data-cy="delete-product-btn">
+                      Remove
+                    </button>
                   </td>
-                  
                 </tr>
               }
             </tbody>
           </table>
         } @else {
-          <div class="alert alert-danger">No hay registros en el sistema</div>
+          <div class="alert alert-danger" data-cy="no-products-message">
+            No hay registros en el sistema
+          </div>
         }
       </div>
     </div>
   </div>
-  

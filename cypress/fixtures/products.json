@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Producto Test 1",
+    "description": "Descripción del producto test 1",
+    "price": 100.50
+  },
+  {
+    "id": 2,
+    "name": "Producto Test 2", 
+    "description": "Descripción del producto test 2",
+    "price": 200.75
+  },
+  {
+    "id": 3,
+    "name": "Producto Test 3",
+    "description": "Descripción del producto test 3", 
+    "price": 300.99
+  }
+]

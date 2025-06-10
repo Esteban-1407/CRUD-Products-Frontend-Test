@@ -1,7 +1,5 @@
 <h2>{{product.id > 0 ? 'Update' : 'Create'}} Product</h2>
-
-<form #productForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-
+<form #productForm="ngForm" (ngSubmit)="onSubmit()" novalidate data-cy="product-form">
   <div>
     <input class="form-control my-2"
       placeholder="Name"
@@ -10,12 +8,12 @@
       #name="ngModel"
       required
       pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$"
-      [ngClass]="{'is-invalid': name.invalid && name.touched}">
+      [ngClass]="{'is-invalid': name.invalid && name.touched}"
+      data-cy="product-name">
     <div *ngIf="name.invalid && name.touched" class="invalid-feedback">
       Nombre es requirido y solo debe contener letras y espacio.
     </div>
   </div>
-
   <div>
     <input class="form-control my-2"
       placeholder="Description"
@@ -24,12 +22,12 @@
       #description="ngModel"
       required
       pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$"
-      [ngClass]="{'is-invalid': description.invalid && description.touched}">
+      [ngClass]="{'is-invalid': description.invalid && description.touched}"
+      data-cy="product-description">
     <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
-        Nombre es requirido y solo debe contener letras y espacio.
+        Descripción es requerida y solo debe contener letras y espacio.
     </div>
   </div>
-
   <div>
     <input type="number"
       class="form-control my-2"
@@ -39,18 +37,18 @@
       #price="ngModel"
       required
       min="1"
-      [ngClass]="{'is-invalid': price.invalid && price.touched}">
+      [ngClass]="{'is-invalid': price.invalid && price.touched}"
+      data-cy="product-price">
     <div *ngIf="price.invalid && price.touched" class="invalid-feedback">
       Precio es requerido y debe ser mayor que 0.
     </div>
   </div>
-
   <div>
     <button type="submit"
       class="btn btn-primary my-2"
-      [disabled]="productForm.invalid">
+      [disabled]="productForm.invalid"
+      data-cy="submit-btn">
       {{product.id > 0 ? 'Update' : 'Create'}}
     </button>
   </div>
-
 </form>
