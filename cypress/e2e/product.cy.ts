@@ -1,11 +1,11 @@
-// cypress/e2e/products.cy.ts
+// cypress/e2e/product.cy.ts
 describe('Products E2E Tests', () => {
   beforeEach(() => {
     // Configurar mocks antes de cada prueba
     cy.mockProductsAPI();
     
-    // Visitar la página principal
-    cy.visit('/');
+    // Visitar la página principal (ajusta la ruta según tu aplicación)
+    cy.visit('http://localhost:4200');
   });
 
   it('should display list of products', () => {
