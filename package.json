@@ -1,16 +1,19 @@
 {
   "name": "angular-product",
   "version": "0.0.0",
-  "scripts": {
+   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:mock": "ng serve --port 4200",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "e2e": "cypress run",
-    "e2e:headless": "cypress run --headless"
+    "cypress:run:chrome": "cypress run --browser chrome",
+    "e2e": "cypress run --spec 'cypress/e2e/**/*.cy.ts'",
+    "e2e:headed": "cypress run --headed --spec 'cypress/e2e/**/*.cy.ts'"
   },
   "private": true,
   "dependencies": {
